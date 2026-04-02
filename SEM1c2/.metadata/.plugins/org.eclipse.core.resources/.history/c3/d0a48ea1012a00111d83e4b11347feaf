@@ -1,0 +1,18 @@
+package arreglo;
+
+import java.util.ArrayList;
+
+import clase.Estudiante;
+
+public class Arregloestudiantes 
+{
+  private ArrayList<Estudiante>estu;
+  public Arregloestudiantes() {
+	  estu=new ArrayList<Estudiante>();
+  }
+  public void Adicionar(Estudiante x) {
+	  estu.add(x);
+}
+
+	
+}
