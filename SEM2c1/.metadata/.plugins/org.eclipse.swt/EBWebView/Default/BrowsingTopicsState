@@ -6,7 +6,14 @@
       "padded_top_topics_start_index": 0,
       "taxonomy_version": 0,
       "top_topics_and_observing_domains": [  ]
+   }, {
+      "calculation_time": "13419875996723252",
+      "config_version": 0,
+      "model_version": "0",
+      "padded_top_topics_start_index": 0,
+      "taxonomy_version": 0,
+      "top_topics_and_observing_domains": [  ]
    } ],
    "hex_encoded_hmac_key": "89F94388B40EE83FAD20A95D21FFFA892EDD9493C8C342D583E098AF1255CCE4",
-   "next_scheduled_calculation_time": "13419810514935370"
+   "next_scheduled_calculation_time": "13420480796723497"
 }
