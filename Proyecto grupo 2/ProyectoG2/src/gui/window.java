@@ -84,12 +84,6 @@ public class window extends JFrame implements ActionListener {
 			contentPane.add(txtcant);
 		}
 		{
-			cmbox = new JComboBox();
-			cmbox.setModel(new DefaultComboBoxModel(new String[] {"Bebidas", "Snacks", "Helados", "Higiene"}));
-			cmbox.setBounds(117, 31, 96, 20);
-			contentPane.add(cmbox);
-		}
-		{
 			lblCantidad = new JLabel("Cantidad:");
 			lblCantidad.setBounds(239, 10, 59, 12);
 			contentPane.add(lblCantidad);
@@ -117,7 +111,8 @@ public class window extends JFrame implements ActionListener {
 			contentPane.add(txtpre);
 		}
 		{
-			btnListar = new JButton("Listar");
+			btnListar = new JButton("Reportar");
+			btnListar.addActionListener(this);
 			btnListar.setBounds(464, 146, 84, 51);
 			contentPane.add(btnListar);
 		}
@@ -137,9 +132,18 @@ public class window extends JFrame implements ActionListener {
 			btnModificar.setBounds(464, 233, 84, 46);
 			contentPane.add(btnModificar);
 		}
+		{
+			comboBox = new JComboBox();
+			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bebidas", "Snacks", "Helados", "Higiene"}));
+			comboBox.setBounds(116, 31, 113, 20);
+			contentPane.add(comboBox);
+		}
 
 	}
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btnListar) {
+			do_btnListar_actionPerformed(e);
+		}
 		if (e.getSource() == btnNewButton) {
 			do_btnNewButton_actionPerformed(e);
 		}
@@ -148,6 +152,7 @@ public class window extends JFrame implements ActionListener {
 		}
 	}
 	Arregoproductos ap=new Arregoproductos();
+	private JComboBox comboBox;
 	
 	protected void do_btnModificar_actionPerformed(ActionEvent e) {
 	}
@@ -155,7 +160,14 @@ public class window extends JFrame implements ActionListener {
 	{
 		String cod = ap.GenerarCod();
 		
-		Producto pro = new Producto(cod, txtnom.getText(), cmbox.getSelectedItem().toString(), Double.parseDouble(txtpre.getText()), Integer.parseInt(txtcant.getText()));
+		Producto pro = new Producto(cod, txtnom.getText(), comboBox.getSelectedItem().toString(), Double.parseDouble(txtpre.getText()), Integer.parseInt(txtcant.getText()));
 		ap.adicionar(pro);
+	}
+	protected void do_btnListar_actionPerformed(ActionEvent e) {
+		txtarea.setText("");
+		txtarea.append("Código\tNombre\tCategoría\tPrecio\tStock");
+		for(int i=0; i<ap.Tamaño();i++) {
+			txtarea.append("\n"+ap.Obtener(i).getCodigo()+"\t"+ap.Obtener(i).getNombre()+"\t"+ap.Obtener(i).getCategoria()+"\t"+ap.Obtener(i).getPrecio()+"\t"+ap.Obtener(i).getStock());
+		}
 	}
 }
