@@ -176,7 +176,12 @@ public class window extends JFrame implements ActionListener {
 		txtarea.setText("");
 		txtarea.append("Código\tNombre\tCategoría\tPrecio\tStock");
 		for(int i=0; i<ap.Tamaño();i++) {
-			txtarea.append("\n"+ap.Obtener(i).getCodigo()+"\t"+ap.Obtener(i).getNombre()+"\t\t"+ap.Obtener(i).getCategoria()+"\t"+ap.Obtener(i).getPrecio()+"\t"+ap.Obtener(i).getStock());
+
+			
+
+			txtarea.append("\n"+ap.Obtener(i).getCodigo()+"\t"+ap.Obtener(i).getNombre()+"\t"+ap.Obtener(i).getCategoria()+
+		    "\t"+ap.Obtener(i).getPrecio()+"\t"+ap.Obtener(i).getStock());
+
 		}
 	}
 	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
