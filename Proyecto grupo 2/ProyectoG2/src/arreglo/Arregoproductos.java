@@ -26,4 +26,11 @@ public class Arregoproductos
     	int num = Tamaño() + 1;
         return String.format("P%03d", num);
     }
+    public Producto Buscar(String Nom) {
+    	for (int i = 0; i<Tamaño();i++) {
+    		if(lista.get(i).getNombre().equalsIgnoreCase(Nom)) return lista.get(i);
+    	}
+    	return null;
+    }
 }
+
