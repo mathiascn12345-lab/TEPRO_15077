@@ -174,7 +174,7 @@ public class window extends JFrame implements ActionListener {
 	}
 	protected void do_btnListar_actionPerformed(ActionEvent e) {
 		txtarea.setText("");
-		txtarea.append("Código\tNombre\tCategoría\tPrecio\tStock");
+		txtarea.append("CÓDIGO\tNOMBRE\t\tCATEGORÍA\tPRECIO\tSTOCK");
 		for(int i=0; i<ap.Tamaño();i++) {
 
 			
@@ -184,16 +184,11 @@ public class window extends JFrame implements ActionListener {
 
 		}
 	}
-	protected void do_btnBuscar_actionPerformed(ActionEvent e) {
+	protected void do_btnBuscar_actionPerformed(ActionEvent e) { // Busca
 		String Nom = txtnom.getText();
 		Producto P = ap.Buscar(Nom);
 		if (P != null) {
-			JOptionPane.showMessageDialog(this,
-					"Codigo: "+P.getCodigo()+"\n"+
-					"Nombre: "+P.getNombre()+"\n"+
-					"Categoría: "+P.getCategoria()+"\n"+
-					"Precio: "+P.getPrecio()+"\n"+
-					"Stock: "+P.getStock());
+			JOptionPane.showMessageDialog(this,"Codigo: "+P.getCodigo()+"\n"+"Nombre: "+P.getNombre()+"\n"+"Categoría: "+P.getCategoria()+"\n"+"Precio: "+P.getPrecio()+"\n"+"Stock: "+P.getStock());
 		}
 		else JOptionPane.showInputDialog(this, "Producto no encontrado");
 	}
