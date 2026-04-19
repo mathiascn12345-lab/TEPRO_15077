@@ -47,6 +47,17 @@ public class Arregoproductos
     	}
     	else JOptionPane.showInputDialog("Nombre de producto no encontrado, ingreselo correctamente.");
     	return false;
+    	
+    }
+    public boolean Eliminar(String Nom1) {
+	    for (int i = 0; i < Tamaño(); i++) {
+	        if (lista.get(i).getNombre().trim().equalsIgnoreCase(Nom1.trim())) {
+	            lista.remove(i);
+	            return true;
+	        }
+	    }
+	    JOptionPane.showMessageDialog(null, "Producto no encontrado.");
+	    return false;
     }
 }
 

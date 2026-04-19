@@ -121,6 +121,19 @@ public class window extends JFrame implements ActionListener {
 		}
 		{
 			btnEliminar = new JButton("Eliminar");
+			btnEliminar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+                    String nombre = txtnom.getText();
+			        
+			        boolean eliminado = ap.Eliminar(nombre);
+			        
+			        if (eliminado) {
+			            JOptionPane.showMessageDialog(null, "Producto eliminado correctamente.");
+			        } else {
+			            JOptionPane.showMessageDialog(null, "No se encontró el producto.");
+			        }
+				}
+			});
 			btnEliminar.setBounds(521, 240, 84, 34);
 			contentPane.add(btnEliminar);
 		}
