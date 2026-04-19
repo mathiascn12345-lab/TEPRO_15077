@@ -1,5 +1,9 @@
 package arreglo;
 import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 import clases.Producto;
 public class Arregoproductos 
 {
@@ -31,6 +35,18 @@ public class Arregoproductos
     		if(lista.get(i).getNombre().equalsIgnoreCase(Nom)) return lista.get(i);
     	}
     	return null;
+    }
+    public boolean Modificar(String Nom1, String txtNuevoNombre,String Cate2,double Pre2, int Stock2) {
+    	Producto P = Buscar(Nom1);
+    	if (P != null) {
+    		P.setNombre(txtNuevoNombre);
+    		P.setCategoria(Cate2);
+    		P.setPrecio(Pre2);
+    		P.setStock(Stock2);
+    		return true;
+    	}
+    	else JOptionPane.showInputDialog("Nombre de producto no encontrado, ingreselo correctamente.");
+    	return false;
     }
 }
 

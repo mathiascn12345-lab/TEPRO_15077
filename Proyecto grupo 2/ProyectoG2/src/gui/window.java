@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.Font;
 
 public class window extends JFrame implements ActionListener {
 
@@ -63,82 +64,95 @@ public class window extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		{
-			lblNewLabel = new JLabel("Nombre:");
-			lblNewLabel.setBounds(10, 10, 59, 12);
+			lblNewLabel = new JLabel("Nombre del producto:");
+			lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 10));
+			lblNewLabel.setBounds(108, 11, 109, 12);
 			contentPane.add(lblNewLabel);
 		}
 		{
 			txtnom = new JTextField();
-			txtnom.setBounds(10, 32, 96, 18);
+			txtnom.setBounds(108, 33, 109, 18);
 			contentPane.add(txtnom);
 			txtnom.setColumns(10);
 		}
 		{
 			lblCategora = new JLabel("Categoría");
-			lblCategora.setBounds(117, 10, 59, 12);
+			lblCategora.setBounds(11, 11, 59, 12);
 			contentPane.add(lblCategora);
 		}
 		{
 			txtcant = new JTextField();
 			txtcant.setColumns(10);
-			txtcant.setBounds(239, 32, 96, 18);
+			txtcant.setBounds(227, 33, 96, 18);
 			contentPane.add(txtcant);
 		}
 		{
-			lblCantidad = new JLabel("Cantidad:");
-			lblCantidad.setBounds(239, 10, 59, 12);
+			lblCantidad = new JLabel("Stock:");
+			lblCantidad.setBounds(227, 11, 59, 12);
 			contentPane.add(lblCantidad);
 		}
 		{
 			txtarea = new JTextArea();
-			txtarea.setBounds(10, 60, 444, 278);
+			txtarea.setBounds(10, 60, 501, 278);
 			contentPane.add(txtarea);
 		}
 		{
 			btnNewButton = new JButton("Adicionar");
 			btnNewButton.addActionListener(this);
-			btnNewButton.setBounds(464, 31, 84, 51);
+			btnNewButton.setBounds(521, 60, 84, 34);
 			contentPane.add(btnNewButton);
 		}
 		{
 			lblPrecio = new JLabel("Precio:");
-			lblPrecio.setBounds(358, 10, 59, 12);
+			lblPrecio.setBounds(333, 11, 59, 12);
 			contentPane.add(lblPrecio);
 		}
 		{
 			txtpre = new JTextField();
 			txtpre.setColumns(10);
-			txtpre.setBounds(358, 32, 96, 18);
+			txtpre.setBounds(333, 33, 96, 18);
 			contentPane.add(txtpre);
 		}
 		{
 			btnListar = new JButton("Reportar");
 			btnListar.addActionListener(this);
-			btnListar.setBounds(464, 146, 84, 51);
+			btnListar.setBounds(521, 195, 84, 34);
 			contentPane.add(btnListar);
 		}
 		{
 			btnEliminar = new JButton("Eliminar");
-			btnEliminar.setBounds(464, 298, 84, 40);
+			btnEliminar.setBounds(521, 240, 84, 34);
 			contentPane.add(btnEliminar);
 		}
 		{
 			btnBuscar = new JButton("Buscar");
 			btnBuscar.addActionListener(this);
-			btnBuscar.setBounds(464, 92, 84, 34);
+			btnBuscar.setBounds(521, 105, 84, 34);
 			contentPane.add(btnBuscar);
 		}
 		{
 			btnModificar = new JButton("Modificar");
 			btnModificar.addActionListener(this);
-			btnModificar.setBounds(464, 233, 84, 46);
+			btnModificar.setBounds(521, 150, 84, 34);
 			contentPane.add(btnModificar);
 		}
 		{
 			comboBox = new JComboBox();
 			comboBox.setModel(new DefaultComboBoxModel(new String[] {"Bebidas", "Snacks", "Helados", "Higiene"}));
-			comboBox.setBounds(116, 31, 113, 20);
+			comboBox.setBounds(10, 32, 84, 20);
 			contentPane.add(comboBox);
+		}
+		{
+			txtNuevoNombre = new JTextField();
+			txtNuevoNombre.setColumns(10);
+			txtNuevoNombre.setBounds(439, 33, 109, 18);
+			contentPane.add(txtNuevoNombre);
+		}
+		{
+			lblNuevoNombre = new JLabel("Nuevo nombre producto:");
+			lblNuevoNombre.setFont(new Font("Tahoma", Font.PLAIN, 9));
+			lblNuevoNombre.setBounds(439, 11, 109, 12);
+			contentPane.add(lblNuevoNombre);
 		}
 
 	}
@@ -158,9 +172,16 @@ public class window extends JFrame implements ActionListener {
 	}
 	Arregoproductos ap=new Arregoproductos();
 	private JComboBox comboBox;
+	private JTextField txtNuevoNombre;
+	private JLabel lblNuevoNombre;
 	
 	protected void do_btnModificar_actionPerformed(ActionEvent e) {//Metodo Modificar
-		
+		boolean  modifica = ap.Modificar(txtnom.getText(), txtNuevoNombre.getText(), comboBox.getSelectedItem().toString(),Double.parseDouble(txtpre.getText()) ,Integer.parseInt(txtcant.getText()));
+		if (modifica) {
+	        JOptionPane.showMessageDialog(this, "Producto modificado correctamente");
+	    } else {
+	        JOptionPane.showMessageDialog(this, "Producto no encontrado");
+	    }
 	}
 	protected void do_btnNewButton_actionPerformed(ActionEvent e) //método adicionar 
 	{
