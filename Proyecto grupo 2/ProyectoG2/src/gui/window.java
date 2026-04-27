@@ -110,7 +110,7 @@ public class window extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-
+    	
         try {
             if (e.getSource() == btnAdicionar) {
 
@@ -119,14 +119,19 @@ public class window extends JFrame implements ActionListener {
                     return;
                 }
 
-                double precio = Double.parseDouble(txtpre.getText());
-                int stock = Integer.parseInt(txtcant.getText());
-
+                if(Double.parseDouble(txtpre.getText())>=1)
+                {double precio = Double.parseDouble(txtpre.getText());
+                 int stock = Integer.parseInt(txtcant.getText());
                 ap.adicionar(txtnom.getText(),
                         comboBox.getSelectedItem().toString(),
                         precio, stock);
 
-                JOptionPane.showMessageDialog(this, "Producto agregado");
+                JOptionPane.showMessageDialog(this, "Producto agregado");}
+                else if (Double.parseDouble(txtpre.getText())<=0) 
+                {JOptionPane.showMessageDialog(this, "El precio debe ser mayor a 0, ni modo que sea gratis o te endeudes");}
+                int stock = Integer.parseInt(txtcant.getText());
+
+                
 
             } else if (e.getSource() == btnListar) {
 
